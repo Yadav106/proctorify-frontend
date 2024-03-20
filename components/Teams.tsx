@@ -26,7 +26,7 @@ const ToDoList: React.FC<ToDoListProps> = () => {
 
       console.log(response_body);
 
-      if (response_body['data']['msg'] && response_body['data']['msg'] == 'success') {
+      if (response_body['data'] && response_body['data']['msg'] && response_body['data']['msg'] == 'success') {
         setTeamsList(response_body['data']['data'])
       }
     }

@@ -59,12 +59,52 @@ const Room: React.FC<RoomProps> = ({
         {
           name == teamObj.leader 
           ?
+          teamObj.ongoing
+          ?
+          <button onClick={() => {
+            async function endMeet() {
+              const url = "http://localhost:8000/proctorify/v1.0/team/end_meeting"
+
+              const body = {
+                'name': teamObj.name,
+              }
+
+              const options = {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json', // Set content type for JSON data
+                },
+                body: JSON.stringify(body),
+              }
+
+              const response = await fetch(url, options);
+
+              router.reload()
+            }
+
+            endMeet()
+          }}>End Meet</button>
+          :
           <button onClick={() => {
             sessionStorage.setItem('team_name', teamObj.name)
             router.push('/teams')
           }}>Create</button>
           :
-          <button>Join</button>
+          !teamObj.ongoing
+          ?
+          <>
+            No Meetings Going On!
+          </>
+          :
+          <>
+            Code : {teamObj.code}
+            <br />
+            <br />
+            <button onClick={() => {
+              sessionStorage.setItem('team_name', '-1');
+              router.push('/teams')
+            }}>Join</button>
+          </>
         }
         <div style={{ position: 'absolute', right: '20px', bottom: '20px' }}>
           <i
@@ -79,7 +119,6 @@ const Room: React.FC<RoomProps> = ({
           />
         </div>
       </div>
-      {/* <EditTeams modal={modal} toggle={toggle} updateTeams={updateTeams} teamObj={teamObj} /> */}
     </div>
   );
 };
