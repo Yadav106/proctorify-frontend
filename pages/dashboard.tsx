@@ -2,6 +2,7 @@ import ToDoList from "@/components/Teams";
 import CreateTeams from "@/components/Modal"; 
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Layout from '@/components/Layout';
 
 const Teams: React.FC = () => {
   const [modal, setModal] = useState(false);
@@ -13,10 +14,10 @@ const Teams: React.FC = () => {
     console.log("Saving Team:", team);
   };
   return (
-    <div>
+    <Layout>
       <ToDoList />
       <CreateTeams modal={modal} toggle={toggle} save={save} />
-    </div>
+    </Layout>
   );
 };
 

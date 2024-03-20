@@ -36,11 +36,12 @@ const Sidebar = () => {
       <ul className='pt-2 '>
         {menuItems.map((menu) => (
           <>
-            <li key={menu.id} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-blue-600 rounded-md ${menu.spacing ? "mt-9" : "mt-2"}  `} >
+            <li key={menu.id} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-blue-600 rounded-md ${menu.spacing ? "mt-2" : "mt-2"}  `} >
               <span className='text-2xl block float-left'>
                 {menu.icon} 
               </span>
               <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"} `}>{menu.name}</span>
+              
               {menu.sub && (
                 <BsChevronDown className={`${(menu.id ===3 ? subRooms : subRoomsAdmin) && "rotate-180"}`} onClick={() => { menu.id===3 ? setSubRooms(!subRooms) : setSubRoomsADmin(!subRoomsAdmin)}} />
               )}
