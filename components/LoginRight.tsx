@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import InputField from "./InputField";
 import { BsChevronDown } from "react-icons/bs";
-import Router from "next/router";
 
 import {signIn} from "next-auth/react"
 
@@ -24,30 +23,11 @@ const LoginRight = () => {
 
   const login = useCallback(async () => {
     try {
-      const url = "http://localhost:8000/proctorify/v1.0/users/login"
-      const body = {
-        "username": name,
-        "password": password
-      }
-
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Set content type for JSON data
-        },
-        body: JSON.stringify(body),
-      }
-
-      const response = await fetch(url, options);
-      const response_data = await response.json();
-
-      if (response_data["data"] && response_data["data"]["msg"] && response_data["data"]["msg"] == "Authenticated") {
-        sessionStorage.setItem('access_token', response_data["data"]["access_token"])
-        Router.push("/dashboard")
-
-      }
-
-      console.log(response_data);
+        await signIn('credentials', {
+            email, 
+            password,
+            callbackUrl: '/dashboard'
+        })
     } catch (error) {
         console.log(error)
     }
@@ -124,7 +104,7 @@ const LoginRight = () => {
               />
             </div>
             {showCodes && (
-              <div className="w-12 absolute ml-4 pl-2 top-12 h-30 text-white z-30 bg-blue-400 ">
+              <div className="w-12 absolute pl-2 top-14 h-30 text-white z-9 bg-blue-400 ">
                 {codes.map((code, index)=>(
                   <div key={index} onClick={handleCode} className="text-white mb-2 ">{code}</div>
                 ))}

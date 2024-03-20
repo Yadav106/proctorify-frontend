@@ -16,7 +16,7 @@ const InputField: React.FC<InputProps> = ({
     type
 }) => {
     return(
-        <div className="relative mb-2 ">
+        <div className="relative mb-2 z-20">
             <input 
                 value={value}
                 onChange={onChange}
