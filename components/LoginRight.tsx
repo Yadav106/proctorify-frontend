@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import InputField from "./InputField";
 import { BsChevronDown } from "react-icons/bs";
+import Router from "next/router";
 
 import {signIn} from "next-auth/react"
 
@@ -23,11 +24,30 @@ const LoginRight = () => {
 
   const login = useCallback(async () => {
     try {
-        await signIn('credentials', {
-            email, 
-            password,
-            callbackUrl: '/dashboard'
-        })
+      const url = "http://localhost:8000/proctorify/v1.0/users/login"
+      const body = {
+        "username": name,
+        "password": password
+      }
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Set content type for JSON data
+        },
+        body: JSON.stringify(body),
+      }
+
+      const response = await fetch(url, options);
+      const response_data = await response.json();
+
+      if (response_data["data"] && response_data["data"]["msg"] && response_data["data"]["msg"] == "Authenticated") {
+        sessionStorage.setItem('access_token', response_data["data"]["access_token"])
+        Router.push("/dashboard")
+
+      }
+
+      console.log(response_data);
     } catch (error) {
         console.log(error)
     }
