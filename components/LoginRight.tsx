@@ -84,13 +84,13 @@ const LoginRight = () => {
         <span className="text-3xl mb-6 font-bold">
           {variant === 'login' ? 'Log in' : 'Register'}
         </span>
-        {variant==='register' && <InputField 
+        <InputField 
           label="Username"
           onChange={(event: any) => setName(event.target.value)}
           id="name"
           type="name"
           value={name}
-        />}
+        />
         {variant === 'register' && <div className="flex flex-col relative">
           <div className="flex relative">
             <div className="block px-2 h-12 w-[60px] mr-2 p-2 rounded-sm text-md border-2 border-gray-400 appearance-none outline-border-gray-700 focus:ring-0" >{code}</div>          
@@ -98,8 +98,8 @@ const LoginRight = () => {
               <InputField 
                 label="Phone"
                 onChange={(event: any) => setNumber(event.target.value)}
-                id="email"
-                type="email"
+                id="phone"
+                type="phone"
                 value={number}
               />
             </div>
@@ -111,13 +111,13 @@ const LoginRight = () => {
               </div>
             )}
           </div>}
-        <InputField 
+          {variant==='register' && <InputField 
           label="Email"
           onChange={(event: any) => setEmail(event.target.value)}
           id="email"
           type="email"
           value={email}
-        />
+        />}
         <InputField 
           label="Password"
           onChange={(event: any) => setPassword(event.target.value)}
