@@ -37,6 +37,7 @@ const Sidebar = () => {
         {menuItems.map((menu) => (
           <>
             <li key={menu.id} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-2 `} >
+
               <span className='text-2xl block float-left'>
                 {menu.icon} 
               </span>

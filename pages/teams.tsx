@@ -43,12 +43,12 @@ const teams = () => {
           Create
         </button>
       )}
-      <div class="card">
-        <div class="infos">
-          <div class="image"></div>
-          <div class="info">
+      <div className="card">
+        <div className="infos">
+          <div className="image"></div>
+          <div className="info">
             <div>
-              <p class="name">Join Meet</p>
+              <p className="name">Join Meet</p>
 
               <input
                 type="text"
@@ -66,7 +66,7 @@ const teams = () => {
             </div>
           </div>
         </div>
-        <button class="request" type="button" onClick={HandleJoinMeet}>
+        <button className="request" type="button" onClick={HandleJoinMeet}>
           Join
         </button>
       </div>

@@ -11,16 +11,28 @@ const ToDoList: React.FC<ToDoListProps> = () => {
   const [teamList, setTeamsList] = useState<Teams[]>([]); // Typed teamList
 
   useEffect(() => {
-    let arr = localStorage.getItem("teamList");
-    if (arr) {
-      try {
-        let jsonObj = JSON.parse(arr) as Teams[]; // Cast to Teams[] after parsing
-        setTeamsList(jsonObj);
-      } catch (error) {
-        console.error("Error parsing localStorage:", error);
+    async function getAllTeams() {
+      const url = "http://localhost:8000/proctorify/v1.0/team/get_all_teams";
+      const access_token = sessionStorage.getItem('access_token')
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        }
+      }
+
+      const response = await fetch(url, options);
+      const response_body = await response.json();
+
+      console.log(response_body);
+
+      if (response_body['data']['msg'] && response_body['data']['msg'] == 'success') {
+        setTeamsList(response_body['data']['data'])
       }
     }
-  }, []);
+    getAllTeams()
+  }, [])
+
 
   const deleteTeams = (index: number) => {
     setTeamsList((prevList) => {
