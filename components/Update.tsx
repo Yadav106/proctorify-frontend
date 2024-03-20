@@ -45,9 +45,8 @@ const Room: React.FC<RoomProps> = ({
     router.push('./contact'); 
   };
 
-
   return (
-    <div className="card-wrapper mr-5" onClick={handleClickRoute}>
+    <div className="card-wrapper mr-5">
       <div className="card" style={{ backgroundColor: colors[index % 5].primaryColor }} ></div>
       <div className="team-holder" >
         <span
@@ -60,7 +59,10 @@ const Room: React.FC<RoomProps> = ({
         {
           name == teamObj.leader 
           ?
-          <button>Create</button>
+          <button onClick={() => {
+            sessionStorage.setItem('team_name', teamObj.name)
+            router.push('/teams')
+          }}>Create</button>
           :
           <button>Join</button>
         }

@@ -8,6 +8,7 @@ const teams = () => {
   const router = useRouter();
   const user = "member";
 
+
   const HandleButtonClick = useCallback(() => {
     router.push(`/rooms/${inputVal}`);
   }, [router, inputVal]);
@@ -24,8 +25,27 @@ const teams = () => {
     return meetCode;
   };
 
+
   const CreateMeet = async () => {
+    const team_name = sessionStorage.getItem('team_name')
     const MeetCode = createString();
+
+    const url = "http://localhost:8000/proctorify/v1.0/team/start_meeting"
+    const body = {
+      'name': team_name,
+      'code': MeetCode
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Set content type for JSON data
+      },
+      body: JSON.stringify(body),
+    }
+
+    const response = await fetch(url, options);
+
     setClick(true);
     setinputVal(MeetCode);
     router.push(`/rooms/${MeetCode}`)
