@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Teams } from '@/interface/Teams';
 import { useRouter } from 'next/router';
 
+const name = sessionStorage.getItem("name");
+
+console.log(`name : `)
 
 interface RoomProps {
   teamObj: Teams;
@@ -56,6 +59,13 @@ const Room: React.FC<RoomProps> = ({
           {teamObj.name}
         </span>
         <p className = "mt-3">{teamObj.leader}</p>
+        {
+          name == teamObj.leader 
+          ?
+          <button>Create</button>
+          :
+          <button>Join</button>
+        }
         <div style={{ position: 'absolute', right: '20px', bottom: '20px' }}>
           <i
             className="far fa-edit mr-3 pr-3"

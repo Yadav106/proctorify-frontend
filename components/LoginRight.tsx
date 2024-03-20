@@ -42,6 +42,7 @@ const LoginRight = () => {
 
         if (response_data["data"] && response_data["data"]["msg"] && response_data["data"]["msg"] == "Authenticated") {
           sessionStorage.setItem('access_token', response_data["data"]["access_token"])
+          sessionStorage.setItem('name', response_data['data']['name'])
           Router.push("/dashboard")
         }
 
