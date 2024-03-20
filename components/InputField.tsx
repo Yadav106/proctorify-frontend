@@ -16,14 +16,15 @@ const InputField: React.FC<InputProps> = ({
     type
 }) => {
     return(
-        <div className="relative mb-2">
+        <div className="relative mb-2 z-20">
             <input 
                 value={value}
                 onChange={onChange}
                 type={type}
                 id = {id}
-                className="block rounded-sm pt-4 pb-1 w-full text-md border-2 border-gray-400 appearance-none outline-border-gray-700 focus:ring-0 peer"
+                className="block p-2 rounded-sm pt-4 pb-1 w-full text-md border-2 border-gray-400 appearance-none outline-border-gray-700 focus:ring-0 peer"
                 placeholder=" "
+                required
             />
             <label 
             className="

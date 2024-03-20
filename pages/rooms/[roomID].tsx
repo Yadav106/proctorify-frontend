@@ -39,7 +39,6 @@ const Room = () => {
 
         });
       };
-
       mymeeting();
     }
   }, [roomID]);
@@ -51,6 +50,4 @@ const Room = () => {
 };
 
 export default Room;
-
-
 
