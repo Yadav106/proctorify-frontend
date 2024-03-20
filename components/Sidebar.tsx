@@ -26,7 +26,7 @@ const Sidebar = () => {
 
   return (
     <div       
-      className={`bg-blue-500 h-screen ${open? "w-72" : "w-20"} p-5 pt-8 duration-300 relative`}>
+      className={`bg-[#586c94] h-screen ${open? "w-72" : "w-20"} p-5 pt-8 duration-300 relative`}>
       <BsArrowLeftShort onClick = {() => setOpen(!open)} className={`bg-white text-blue-800 text-3xl rounded-full absolute -right-3 top-7 border border-blue-800 cursor-pointer ${!open && "rotate-180"} `} />
       <div className='inline-flex' >
         <GiVideoConference className={`bg-white text-4xl rounded text-blue-500 cursor-pointer block float-left mr-3 duration-500 ${open && "rotate-[360deg]"} `} />
@@ -36,11 +36,12 @@ const Sidebar = () => {
       <ul className='pt-2 '>
         {menuItems.map((menu) => (
           <>
-            <li key={menu.id} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-blue-600 rounded-md ${menu.spacing ? "mt-9" : "mt-2"}  `} >
+            <li key={menu.id} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-2  `} >
               <span className='text-2xl block float-left'>
                 {menu.icon} 
               </span>
               <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"} `}>{menu.name}</span>
+
               {menu.sub && (
                 <BsChevronDown className={`${(menu.id ===3 ? subRooms : subRoomsAdmin) && "rotate-180"}`} onClick={() => { menu.id===3 ? setSubRooms(!subRooms) : setSubRoomsADmin(!subRoomsAdmin)}} />
               )}

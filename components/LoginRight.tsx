@@ -104,7 +104,7 @@ const LoginRight = () => {
               />
             </div>
             {showCodes && (
-              <div className="w-12 absolute pl-2 top-14 h-30 text-white z-9 bg-blue-400 ">
+              <div className="w-12 absolute ml-4 pl-2 top-12 h-30 text-white z-30 bg-blue-400 ">
                 {codes.map((code, index)=>(
                   <div key={index} onClick={handleCode} className="text-white mb-2 ">{code}</div>
                 ))}
