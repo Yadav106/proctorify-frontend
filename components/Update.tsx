@@ -55,6 +55,7 @@ const Room: React.FC<RoomProps> = ({
         >
           {teamObj.Name}
         </span>
+        <p className = "mt-3">{teamObj.Description}</p>
         <div style={{ position: 'absolute', right: '20px', bottom: '20px' }}>
           <i
             className="far fa-edit mr-3 pr-3"

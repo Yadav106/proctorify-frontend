@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { CreateTeamsProps } from "@/interface/CreateTeamProps";
 import { Teams } from "@/interface/Teams";
 import DatePicker from '@/components/DatePicker'
-
+import App from "./LocalisationProvider";
 const CreateTeams: React.FC<CreateTeamsProps> = ({ modal, toggle, save }) => {
   const [teamName, setTeamName] = useState("");
   let [description, setDescription] = useState("");
@@ -45,18 +45,11 @@ const CreateTeams: React.FC<CreateTeamsProps> = ({ modal, toggle, save }) => {
                 onChange={handler}
               />
             </div>
-            <div>
-              <label>Date</label>
-              {/* <input
-                type="date"
-                name="Date"
-                className="form-control"
-                value={startDate}
-                onChange={handleDateChange}
-              /> */}
-              <DatePicker/>
-            </div>
-            {/* <div className="form-group">
+            {/* <div className="pt-2">
+              <label>Set Meeting Date</label><br />
+              <textarea name="" id="" cols="30" rows="10"><App/></textarea>
+            </div> */}
+            <div className="form-group">
               <label>Description</label>
               <textarea
                 name="description"
@@ -66,7 +59,7 @@ const CreateTeams: React.FC<CreateTeamsProps> = ({ modal, toggle, save }) => {
                 value={description}
                 onChange={handler}
               />
-            </div> */}
+            </div>
           </form>
         </ModalBody>
         <ModalFooter>

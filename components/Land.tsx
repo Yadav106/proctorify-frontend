@@ -16,12 +16,12 @@ export default function Land() {
             Communicate whenever, wherever, however you want
           </h3>
           <div className="flex flex-row">
-            <button className="border border-white border-solid rounded-md py-2 px-4 mt-10 m-2.5 w-[100px] font-bold bg-gradient-to-r from-black to-blue-900 hover:from-blue-900 hover:to-blue-900 transition-colors duration-300">
-              Sign Up
+            <button className="border border-white border-solid rounded-md py-2 px-4 mt-10 m-2.5 font-bold bg-gradient-to-r from-black to-blue-900 hover:from-blue-900 hover:to-blue-900 transition-colors duration-300">
+              Get Started
             </button>
-            <button className="border border-white border-solid rounded-md py-2 px-4 mt-10 m-2.5 w-[100px] font-bold bg-gradient-to-r from-black to-blue-900 hover:from-blue-900 hover:to-blue-900 transition-colors duration-300">
+            {/* <button className="border border-white border-solid rounded-md py-2 px-4 mt-10 m-2.5 w-[100px] font-bold bg-gradient-to-r from-black to-blue-900 hover:from-blue-900 hover:to-blue-900 transition-colors duration-300">
               Login
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
