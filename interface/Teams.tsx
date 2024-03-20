@@ -1,4 +1,4 @@
 export interface Teams {
-  Name: string;
-  Description: string;
+  name: string;
+  leader: string;
 }
