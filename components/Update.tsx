@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { Teams } from '@/interface/Teams';
 import { useRouter } from 'next/router';
 
-const name = sessionStorage.getItem("name");
-
-console.log(`name : `)
-
 interface RoomProps {
   teamObj: Teams;
   index: number;
@@ -20,6 +16,8 @@ const Room: React.FC<RoomProps> = ({
   updateListArray,
 }) => {
   const [modal, setModal] = useState(false);
+
+  const name = sessionStorage.getItem('name')
 
   const colors = [
     { primaryColor: '#5D93E1', secondaryColor: '#ECF3FC' },
